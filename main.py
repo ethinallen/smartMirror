@@ -21,7 +21,7 @@ class mirror():
         print('DAILY:   {}'.format(dailySummary))
 
 
+
 if __name__ == '__main__':
     m = mirror()
-    d,t = m.updateWeather()
-    print(d, t)
+    m.updateWeather()
