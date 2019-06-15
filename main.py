@@ -14,7 +14,7 @@ class mirror():
             coord = creds['coord']
             self.weatherURL = 'https://api.darksky.net/forecast/' + key + '/' + coord
             self.times = []
-            self.temps = []
+            self.temps = ['']
             self.precip = []
             self.xlabels = []
             self.sun = None
@@ -45,7 +45,7 @@ class mirror():
                 self.precip.append(element['precipProbability'])
             if j > 10:
                 j = 0
-
+        for element in [['TEMPERATURE', self.temps], ['PRECIPITATION', self.precipication]]
         # all of the plot attributes
         plt.style.use('dark_background')
         plt.rcParams['axes.facecolor'] = 'black'
@@ -53,8 +53,8 @@ class mirror():
 
         # Plot the data and set the labels.
         plt.xticks(color='black')
-        plt.bar(self.times, self.temps, color='w')
-        plt.ylabel('TEMP')
+        plt.bar(self.times, element[1], color='w')
+        plt.ylabel(element[0])
         plt.savefig('weiners.png', dpi = 1800)
 
 if __name__ == '__main__':
