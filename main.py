@@ -25,7 +25,6 @@ class mirror():
         for f in files:
             if f == 'weiners.png':
                 os.remove(f)
-                print('REMOVED FILE')
         r = requests.get(self.weatherURL)
         data = r.json()
         # for key in data['daily']:
