@@ -3,7 +3,6 @@ import json
 import matplotlib.pyplot as plt
 import time
 import os
-import numpy as np
 import twilio
 
 class mirror():
@@ -24,7 +23,7 @@ class mirror():
     def updateForecasts(self):
         files = [f for f in os.listdir('.') if os.path.isfile(f)]
         for f in files:
-            if f == 'TEMPERATURE.png' or f == 'PRECIPITATION.png':
+            if f == 'weiners.png':
                 os.remove(f)
         r = requests.get(self.weatherURL)
         data = r.json()
@@ -46,8 +45,11 @@ class mirror():
                 self.precip.append(element['precipProbability'])
             if j > 10:
                 j = 0
-        for element in [['TEMPERATURE', self.temps], ['PRECIPITATION', self.precip]]:
 
+        # all of the plot attributes
+        plt.style.use('dark_background')
+        plt.rcParams['axes.facecolor'] = 'black'
+        plt.rcParams['savefig.facecolor'] = 'black'
 
             if (element[0] == 'PRECIPITATION' and np.mean(element[1]) > .05) or element[0] == 'TEMPERATURE':
                 # all of the plot attributes
@@ -66,6 +68,5 @@ class mirror():
                 plt.close()
 
 if __name__ == '__main__':
-    # print('hello')
     m = mirror()
     m.updateForecasts()
