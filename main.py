@@ -57,8 +57,6 @@ class mirror():
                 plt.rcParams['axes.facecolor'] = 'black'
                 plt.rcParams['savefig.facecolor'] = 'black'
 
-                # very much want to keep this
-
                 # Plot the data and set the labels.
                 plt.xticks(color='black')
                 plt.bar(self.times, element[1], color='w')
