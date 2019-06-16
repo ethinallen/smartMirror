@@ -3,7 +3,8 @@ import json
 import matplotlib.pyplot as plt
 import time
 import os
-
+import numpy as np
+import twilio
 
 class mirror():
 
@@ -14,7 +15,7 @@ class mirror():
             coord = creds['coord']
             self.weatherURL = 'https://api.darksky.net/forecast/' + key + '/' + coord
             self.times = []
-            self.temps = ['']
+            self.temps = []
             self.precip = []
             self.xlabels = []
             self.sun = None
@@ -23,7 +24,7 @@ class mirror():
     def updateForecasts(self):
         files = [f for f in os.listdir('.') if os.path.isfile(f)]
         for f in files:
-            if f == 'weiners.png':
+            if f == 'TEMPERATURE.png' or f == 'PRECIPITATION.png':
                 os.remove(f)
         r = requests.get(self.weatherURL)
         data = r.json()
@@ -45,17 +46,22 @@ class mirror():
                 self.precip.append(element['precipProbability'])
             if j > 10:
                 j = 0
-        for element in [['TEMPERATURE', self.temps], ['PRECIPITATION', self.precipication]]
-        # all of the plot attributes
-        plt.style.use('dark_background')
-        plt.rcParams['axes.facecolor'] = 'black'
-        plt.rcParams['savefig.facecolor'] = 'black'
+        for element in [['TEMPERATURE', self.temps], ['PRECIPITATION', self.precip]]:
 
-        # Plot the data and set the labels.
-        plt.xticks(color='black')
-        plt.bar(self.times, element[1], color='w')
-        plt.ylabel(element[0])
-        plt.savefig('weiners.png', dpi = 1800)
+
+            if (element[0] == 'PRECIPITATION' and np.mean(element[1]) > .05) or element[0] == 'TEMPERATURE':
+                # all of the plot attributes
+                plt.style.use('dark_background')
+                plt.rcParams['axes.facecolor'] = 'black'
+                plt.rcParams['savefig.facecolor'] = 'black'
+
+                # Plot the data and set the labels.
+                plt.xticks(color='black')
+                plt.bar(self.times, element[1], color='w')
+                plt.ylabel(ylabel = '', size=30)
+                plt.tick_params(axis='both', which='major', labelsize=20)
+                plt.savefig((element[0] + '.png'), dpi = 1800)
+                plt.close()
 
 if __name__ == '__main__':
     # print('hello')
