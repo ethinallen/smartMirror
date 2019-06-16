@@ -31,7 +31,13 @@ body{
   font-size: 70px;
   margin-left: 10px;
   margin-top: -10px;
-  margin-bottom: -20px;
+  margin-bottom: -10px;
+}
+
+.pGraph{
+  width: 300px;
+  height: 100px;
+  outline-color: black;
 }
 
 li{
