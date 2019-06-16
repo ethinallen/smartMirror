@@ -55,12 +55,14 @@ class mirror():
                 plt.rcParams['axes.facecolor'] = 'black'
                 plt.rcParams['savefig.facecolor'] = 'black'
 
+                # very much want to keep this
+
                 # Plot the data and set the labels.
                 plt.xticks(color='black')
                 plt.bar(self.times, element[1], color='w')
                 plt.ylabel(ylabel = '', size=30)
                 plt.tick_params(axis='both', which='major', labelsize=20)
-                plt.savefig((element[0] + '.png'), dpi = 1800)
+                plt.savefig(('/templates/' + element[0] + '.png'), dpi = 1800)
                 plt.close()
 
 if __name__ == '__main__':
