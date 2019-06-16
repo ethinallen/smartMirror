@@ -51,7 +51,6 @@ class mirror():
         plt.rcParams['axes.facecolor'] = 'black'
         plt.rcParams['savefig.facecolor'] = 'black'
 
-<<<<<<< HEAD
             if (element[0] == 'PRECIPITATION' and np.mean(element[1]) > .05) or element[0] == 'TEMPERATURE':
                 # all of the plot attributes
                 plt.style.use('dark_background')
@@ -65,13 +64,6 @@ class mirror():
                 plt.tick_params(axis='both', which='major', labelsize=20)
                 plt.savefig(('/templates/' + element[0] + '.png'), dpi = 1800)
                 plt.close()
-=======
-        # Plot the data and set the labels.
-        plt.xticks(color='black')
-        plt.bar(self.times, self.temps, color='w')
-        plt.ylabel('TEMP')
-        plt.savefig('templates/weiners.png', dpi = 1800)
->>>>>>> 6e36268e7b82d8e93b3fe93fe9c331902b9702eb
 
 if __name__ == '__main__':
     m = mirror()
