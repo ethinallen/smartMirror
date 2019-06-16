@@ -55,7 +55,7 @@ class mirror():
         plt.xticks(color='black')
         plt.bar(self.times, self.temps, color='w')
         plt.ylabel('TEMP')
-        plt.savefig('weiners.png', dpi = 1800)
+        plt.savefig('templates/weiners.png', dpi = 1800)
 
 if __name__ == '__main__':
     # print('hello')
