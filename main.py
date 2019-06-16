@@ -48,7 +48,6 @@ class mirror():
 
         # all of the plot attributes
         plt.style.use('dark_background')
-        plt.rcParams['axes.facecolor'] = 'black'
         plt.rcParams['savefig.facecolor'] = 'black'
 
             if (element[0] == 'PRECIPITATION' and np.mean(element[1]) > .05) or element[0] == 'TEMPERATURE':
