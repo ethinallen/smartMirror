@@ -3,7 +3,7 @@ import json
 import matplotlib.pyplot as plt
 import time
 import os
-
+import twilio
 
 class mirror():
 
@@ -58,6 +58,5 @@ class mirror():
         plt.savefig('templates/weiners.png', dpi = 1800)
 
 if __name__ == '__main__':
-    # print('hello')
     m = mirror()
     m.updateForecasts()
