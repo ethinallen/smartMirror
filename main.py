@@ -46,23 +46,24 @@ class mirror():
             if j > 10:
                 j = 0
 
-        # all of the plot attributes
-        plt.style.use('dark_background')
-        plt.rcParams['savefig.facecolor'] = 'black'
+        if (element[0] == 'PRECIPITATION' and np.mean(element[1]) > .05) or element[0] == 'TEMPERATURE':
 
-            if (element[0] == 'PRECIPITATION' and np.mean(element[1]) > .05) or element[0] == 'TEMPERATURE':
-                # all of the plot attributes
-                plt.style.use('dark_background')
-                plt.rcParams['axes.facecolor'] = 'black'
-                plt.rcParams['savefig.facecolor'] = 'black'
+            # all of the plot attributes
+            plt.style.use('dark_background')
+            plt.rcParams['savefig.facecolor'] = 'black'
 
-                # Plot the data and set the labels.
-                plt.xticks(color='black')
-                plt.bar(self.times, element[1], color='w')
-                plt.ylabel(ylabel = '', size=30)
-                plt.tick_params(axis='both', which='major', labelsize=20)
-                plt.savefig(('/templates/' + element[0] + '.png'), dpi = 1800)
-                plt.close()
+            # all of the plot attributes
+            plt.style.use('dark_background')
+            plt.rcParams['axes.facecolor'] = 'black'
+            plt.rcParams['savefig.facecolor'] = 'black'
+
+            # Plot the data and set the labels.
+            plt.xticks(color='black')
+            plt.bar(self.times, element[1], color='w')
+            plt.ylabel(ylabel = '', size=30)
+            plt.tick_params(axis='both', which='major', labelsize=20)
+            plt.savefig(('/templates/' + element[0] + '.png'), dpi = 1800)
+            plt.close()
 
 if __name__ == '__main__':
     m = mirror()
