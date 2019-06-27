@@ -14,8 +14,8 @@ class mirror():
             coord = creds['coord']
             self.weatherURL = 'https://api.darksky.net/forecast/' + key + '/' + coord
             self.times = []
-            self.temps = []
-            self.precip = []
+            self.temps = ['temperature', []]
+            self.precip = ['preicp', []]
             self.xlabels = []
             self.sun = None
 
@@ -41,10 +41,11 @@ class mirror():
                 if j == 5:
                     self.xlabels.append(time.strftime('%m-%d %H:%M', time.localtime(element['time'])))
                 self.times.append(time.strftime('%m-%d %H:%M', time.localtime(element['time'])))
-                self.temps.append(element['temperature'])
-                self.precip.append(element['precipProbability'])
+                self.temps[1].append(element['temperature'])
+                self.precip[1].append(element['precipProbability'])
             if j > 10:
                 j = 0
+        for element in [self.precip, self.temps]:
 
         if (element[0] == 'PRECIPITATION' and np.mean(element[1]) > .05) or element[0] == 'TEMPERATURE':
             # all of the plot attributes
