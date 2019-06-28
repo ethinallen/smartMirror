@@ -1,0 +1,6 @@
+{
+  "key" : "darkSky api key",
+  "coord" : "lat and long of location of mirror",
+  "accountSID": "twilio account SID",
+  "authToken": "twilio auth token"
+}
